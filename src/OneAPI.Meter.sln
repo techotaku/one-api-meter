@@ -5,11 +5,13 @@ VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneAPI.Meter.Models", "OneAPI.Meter.Models\OneAPI.Meter.Models.csproj", "{7F349FA2-B79F-49DD-8D62-BF535CCAADD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneAPI.Meter.Clients", "OneAPI.Meter.Clients\OneAPI.Meter.Clients.csproj", "{D2DC192D-CCE0-4F11-9C51-25A016CE120D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneAPI.Meter.Clients", "OneAPI.Meter.Clients\OneAPI.Meter.Clients.csproj", "{D2DC192D-CCE0-4F11-9C51-25A016CE120D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneAPI.Meter.Options", "OneAPI.Meter.Options\OneAPI.Meter.Options.csproj", "{EECEDD65-0040-4AD1-AB85-D6D42BCA8421}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneAPI.Meter.Options", "OneAPI.Meter.Options\OneAPI.Meter.Options.csproj", "{EECEDD65-0040-4AD1-AB85-D6D42BCA8421}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneAPI.Meter", "OneAPI.Meter\OneAPI.Meter.csproj", "{3251C7FF-8729-48DC-ABE1-3256A2314D0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneAPI.Meter", "OneAPI.Meter\OneAPI.Meter.csproj", "{3251C7FF-8729-48DC-ABE1-3256A2314D0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneAPI.Meter.Email", "OneAPI.Meter.Email\OneAPI.Meter.Email.csproj", "{5E6718F9-454E-4273-AD38-0FD791DFCD28}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{3251C7FF-8729-48DC-ABE1-3256A2314D0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3251C7FF-8729-48DC-ABE1-3256A2314D0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3251C7FF-8729-48DC-ABE1-3256A2314D0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E6718F9-454E-4273-AD38-0FD791DFCD28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E6718F9-454E-4273-AD38-0FD791DFCD28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E6718F9-454E-4273-AD38-0FD791DFCD28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E6718F9-454E-4273-AD38-0FD791DFCD28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

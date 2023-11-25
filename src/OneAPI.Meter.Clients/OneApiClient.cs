@@ -93,7 +93,7 @@ namespace OneAPI.Meter.Clients
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred while fetching stat for user \"{username}\" (channel {channel}).", username, stringChannels);
-                throw;
+                return new Stat();
             }
         }
 
@@ -119,7 +119,7 @@ namespace OneAPI.Meter.Clients
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred while getting users (page {page}).", page);
-                throw;
+                return Array.Empty<User>();
             }
         }
 

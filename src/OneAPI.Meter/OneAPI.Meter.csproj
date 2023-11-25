@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OneAPI.Meter.Clients\OneAPI.Meter.Clients.csproj" />
+    <ProjectReference Include="..\OneAPI.Meter.Email\OneAPI.Meter.Email.csproj" />
     <ProjectReference Include="..\OneAPI.Meter.Options\OneAPI.Meter.Options.csproj" />
   </ItemGroup>
 
