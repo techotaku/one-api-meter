@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "OneAPI.Meter": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
