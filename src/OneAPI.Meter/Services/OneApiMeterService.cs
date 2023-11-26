@@ -17,6 +17,26 @@ namespace OneAPI.Meter.Services
         private readonly EmailSender _sender = sender ?? throw new ArgumentNullException(nameof(options));
         private readonly ILogger<OneApiMeterService> _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
+        private static void SetUserUsage(string user, long quota, Dictionary<string, double> collection, Dictionary<string, string> mapping)
+        {
+            var usage = quota / QuotaFactor;
+
+            var target = user;
+            if (mapping.TryGetValue(user, out string? value))
+            {
+                target = value;
+            }
+
+            if (!collection.ContainsKey(target))
+            {
+                collection[target] = usage;
+            }
+            else
+            {
+                collection[target] += usage;
+            }
+        }
+
         public async Task RunAsync()
         {
             if (_statisticsGroups.Length <= 0)
@@ -36,6 +56,18 @@ namespace OneAPI.Meter.Services
             var emailReport = new EmailReport();
             foreach (var group in _statisticsGroups) 
             {
+                var mapping = new Dictionary<string, string>();
+                foreach (var m in group.Mapping)
+                {
+                    var user = users.FirstOrDefault(u => u.Id == m.Key);
+                    var targetUser = users.FirstOrDefault(u => u.Id == m.Value);
+                    if (user != null && !string.IsNullOrEmpty(user.DisplayName) && 
+                        targetUser != null && !string.IsNullOrEmpty(targetUser.DisplayName))
+                    {
+                        mapping[user.DisplayName] = targetUser.DisplayName;
+                    }
+                }
+
                 var report = new StatisticsReport 
                 { 
                     Name = group.Name,
@@ -48,7 +80,7 @@ namespace OneAPI.Meter.Services
                     foreach(var user in users)
                     {
                         var stat = await _client.GetUserMonthlyStatAsync(user.Username, group.Channels);
-                        report.Month[user.DisplayName] = stat.Quota / QuotaFactor;
+                        SetUserUsage(user.DisplayName, stat.Quota, report.Month, mapping);
                     }
                     _logger.LogInformation("Monthly usage per user for \"{group}\" obtained.", group.Name);
                 }
@@ -58,7 +90,7 @@ namespace OneAPI.Meter.Services
                     foreach (var user in users)
                     {
                         var stat = await _client.GetLastDayStatAsync(user.Username, group.Channels);
-                        report.Day[user.DisplayName] = stat.Quota / QuotaFactor;
+                        SetUserUsage(user.DisplayName, stat.Quota, report.Day, mapping);
                     }
                     _logger.LogInformation("Last day usage per user for \"{group}\" obtained.", group.Name);
                 }

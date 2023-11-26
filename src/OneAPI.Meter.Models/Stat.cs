@@ -2,6 +2,6 @@
 {
     public class Stat
     {
-        public int Quota { get; set; }
+        public long Quota { get; set; }
     }
 }
