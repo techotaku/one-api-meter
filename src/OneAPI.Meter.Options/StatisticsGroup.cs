@@ -9,6 +9,6 @@
 
         public bool LastDayUsagePerUser { get; set; } = false;
 
-        public Dictionary<int, int> Mapping { get; set; } = [];
+        public Dictionary<string, string> Mapping { get; set; } = [];
     }
 }

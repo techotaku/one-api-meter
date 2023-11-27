@@ -24,10 +24,10 @@ namespace OneAPI.Meter.Email.Services
                 {
                     message.To.Add(MailboxAddress.Parse(to));
                 }
-                message.Subject = _options.Subject;
+                message.Subject = "Usage Report - " + _options.SiteName;
                 message.Body = new TextPart("html")
                 {
-                    Text = emailReport.ToHtml()
+                    Text = emailReport.ToHtml(_options.SiteName)
                 };
 
                 using var client = new SmtpClient();

@@ -59,8 +59,8 @@ namespace OneAPI.Meter.Services
                 var mapping = new Dictionary<string, string>();
                 foreach (var m in group.Mapping)
                 {
-                    var user = users.FirstOrDefault(u => u.Id == m.Key);
-                    var targetUser = users.FirstOrDefault(u => u.Id == m.Value);
+                    var user = users.FirstOrDefault(u => u.Username == m.Key);
+                    var targetUser = users.FirstOrDefault(u => u.Username == m.Value);
                     if (user != null && !string.IsNullOrEmpty(user.DisplayName) && 
                         targetUser != null && !string.IsNullOrEmpty(targetUser.DisplayName))
                     {

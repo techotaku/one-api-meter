@@ -4,6 +4,8 @@
     {
         public const string Email = "Email";
 
+        public string SiteName { get; set; } = string.Empty;
+
         public string Host { get; set; } = string.Empty;
 
         public int Port { get; set; } = 587;
@@ -15,8 +17,5 @@
         public string From { get; set; } = string.Empty;
 
         public string[] To { get; set; } = [];
-
-        public string Subject { get; set; } = "One API Usage Report";
-
     }
 }
